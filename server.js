@@ -21,27 +21,25 @@ function register(event) {
           userPassword: password,
           confirmPassword: confirmPassword,
         };
-        console.log(userData);
+        // console.log(userData);
         //now store data into LS(local storage)//
-        localStorage.setItem("Users");
+        localStorage.setItem("Users", JSON.stringify(userData));
         // JSON.stringify(); //converts object into Json//
         // JSON.parse();   // converts Json into Object//
         // localStorage.setItem(key, value)  //to save into LS(local storage)//
         // localStorage.getItem(key)       //to get data from LS//
         // localStorage.removeItem(key)    //to remove data from LS//
       } else {
-        console.log("Passwords does not match"); 
+        console.log("Passwords does not match");
       }
     } else {
       console.log("password should be atleast 8");
     }
   } else {
-       console.log("Please fill all your details");
-
+    console.log("Please fill all your details");
   }
 }
 
-function collectData(){
-    // alert(Users)
-    localStorage.getItem("Users")
+function collectData() {
+  console.log(JSON.parse(localStorage.getItem("Users")));
 }
