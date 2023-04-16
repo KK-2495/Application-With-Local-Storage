@@ -1,7 +1,3 @@
-
-
-var arrayData = [];
-
 function register(event) {
   event.preventDefault();
   // console.log(document.getElementById("userName").value);
@@ -14,7 +10,31 @@ function register(event) {
   var confirmPassword = document.getElementById("userConfirmPassword").value;
   // console.log(confirmPassword, " - is your ConfirmedPassword")
 
-  // console.log(userData);
+  // var LS = JSON.parse(localStorage.getItem("Users"))  || [];
+  // // console.log(LS)
+  // var userData = {
+  //   userName: name,
+  //   userEmail: email,
+  //   userPassword: password,
+  //   confirmPassword: confirmPassword,
+  // };
+  // LS.push(userData);
+  // localStorage.setItem("Users", JSON.stringify(LS));
+  // console.log(LS);
+
+  // flagForEmail = false;
+
+  // for(i=0; i<LS.length; i++){
+  //   console.log(LS);
+  //   if(LS[i].userEmail == email)
+  //   flagForEmail = true;
+  // }
+  // if(!flagForEmail){
+  //   alert("Registration Succesful");
+  // }else {
+  //   alert("Email already exists in Local Storage");
+  // }
+  // alert("Email exists in Local storage");
 
   if (name && email && password && confirmPassword) {
     if (password.length >= 8 && confirmPassword.length >= 8) {
@@ -25,10 +45,28 @@ function register(event) {
           userPassword: password,
           confirmPassword: confirmPassword,
         };
-        arrayData.push(userData);
+        var LS = JSON.parse(localStorage.getItem("Users")) || [];
+        var flagForEmail = false;
+        for (var i = 0; i < LS.length; i++) {
+          if (LS[i].userEmail == email) {
+            flagForEmail = true;
+          }
+        }
+        if (!flagForEmail) {
+          LS.push(userData);
+          localStorage.setItem("Users", JSON.stringify(LS));
+
+          alert("Registration Succesful");
+          document.getElementById("userName").value = "";
+          document.getElementById("userEmail").value = "";
+          document.getElementById("userPassword").value = "";
+          document.getElementById("userConfirmPassword").value = "";
+        } else {
+          alert("Email already exists in local storage");
+        }
+
         // console.log(userData);
-        //now store data into LS(local storage)//
-        localStorage.setItem("Users", JSON.stringify(arrayData));
+        // now store data into LS(local storage)//
         // JSON.stringify(); //converts object into Json//
         // JSON.parse();   // converts Json into Object//
         // localStorage.setItem(key, value)  //to save into LS(local storage)//
@@ -43,8 +81,4 @@ function register(event) {
   } else {
     console.log("Please fill all your details");
   }
-}
-
-function collectData() {
-  console.log(JSON.parse(localStorage.getItem("Users")));
 }
