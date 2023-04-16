@@ -1,3 +1,7 @@
+
+
+var arrayData = [];
+
 function register(event) {
   event.preventDefault();
   // console.log(document.getElementById("userName").value);
@@ -21,9 +25,10 @@ function register(event) {
           userPassword: password,
           confirmPassword: confirmPassword,
         };
+        arrayData.push(userData);
         // console.log(userData);
         //now store data into LS(local storage)//
-        localStorage.setItem("Users", JSON.stringify(userData));
+        localStorage.setItem("Users", JSON.stringify(arrayData));
         // JSON.stringify(); //converts object into Json//
         // JSON.parse();   // converts Json into Object//
         // localStorage.setItem(key, value)  //to save into LS(local storage)//
