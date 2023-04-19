@@ -3,9 +3,9 @@ function register(event) {
   // console.log(document.getElementById("userName").value);
   var name = document.getElementById("userName").value;
   // console.log(name, " - is your User Name")
-  var email = document.getElementById("userEmail").value;
+  // var email = document.getElementById("userEmail").value;
   // console.log(email, " - is your User Email")
-  var password = document.getElementById("userPassword").value;
+  // var password = document.getElementById("userPassword").value;
   // console.log(password, " - is your User Password")
   var confirmPassword = document.getElementById("userConfirmPassword").value;
   // console.log(confirmPassword, " - is your ConfirmedPassword")
@@ -82,3 +82,34 @@ function register(event) {
     console.log("Please fill all your details");
   }
 }
+// Step 1  : Get user typed data from html to JS = Completed
+// Step 2 : Get all users data into JS from LS = Completed
+// Step 3 : Iterate all users (LS) with user typed data 
+// Step 4 : If email & password both match at same time then
+//  show user suceess
+
+function login(event) {
+  event.preventDefault();
+  var email = document.getElementById("userEmail").value;
+  var password = document.getElementById("userPassword").value;
+  // alert(email,password);
+  var LSlogin = JSON.parse(localStorage.getItem("Users"));
+  console.log(LSlogin);
+  var flagForUser = false;
+  for(var i=0; i<LSlogin.length; i++){
+    // console.log(LSlogin[i].userEmail);
+    if(LSlogin[i].userEmail == email && LSlogin[i].userPassword == password){
+      flagForUser = true;
+    }
+  }
+  if(flagForUser == true){
+    alert("Registration Successful.")
+  }else{
+    alert("Credential does not match")
+  }
+
+}
+
+// step 1: create an empty object (currentUser)
+// step 2: check if the email and password are the same as the account in the local storage. If they are the same, then assign the object data present in the DB to the empty object created (currentUser)
+// step 3: set the object currentUser in the local storage once flag is true.
