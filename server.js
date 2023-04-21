@@ -3,9 +3,9 @@ function register(event) {
   // console.log(document.getElementById("userName").value);
   var name = document.getElementById("userName").value;
   // console.log(name, " - is your User Name")
-  // var email = document.getElementById("userEmail").value;
+  var email = document.getElementById("userEmail").value;
   // console.log(email, " - is your User Email")
-  // var password = document.getElementById("userPassword").value;
+  var password = document.getElementById("userPassword").value;
   // console.log(password, " - is your User Password")
   var confirmPassword = document.getElementById("userConfirmPassword").value;
   // console.log(confirmPassword, " - is your ConfirmedPassword")
