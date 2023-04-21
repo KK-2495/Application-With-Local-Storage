@@ -94,16 +94,22 @@ function login(event) {
   var password = document.getElementById("userPassword").value;
   // alert(email,password);
   var LSlogin = JSON.parse(localStorage.getItem("Users"));
-  console.log(LSlogin);
+  // console.log(LSlogin);
+
+  var currentUser;
   var flagForUser = false;
   for(var i=0; i<LSlogin.length; i++){
     // console.log(LSlogin[i].userEmail);
     if(LSlogin[i].userEmail == email && LSlogin[i].userPassword == password){
       flagForUser = true;
+      currentUser = LSlogin[i];
     }
   }
   if(flagForUser == true){
-    alert("Registration Successful.")
+    // console.log(currentUser);
+    localStorage.setItem("currentUser", JSON.stringify(currentUser))
+    window.location.href = './home.html';
+    alert("Login Successful.")
   }else{
     alert("Credential does not match")
   }

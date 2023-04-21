@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+<body>
+    <h3>Welcome to our Homepage</h3>
+    <div id="switch">
+    <button onclick="window.location.href = `./Login.html`">Login</button>        
+    <button onclick="window.location.href = `./Register.html`">Register</button>        
+    </div>
+    <script>
+        window.onload = function () {
+            // alert("loading");
+            var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            // console.log(currentUser);
+            if(!!currentUser){
+                // alert(currentUser.userName);
+                var divFromHtml = document.getElementById("switch");
+                // console.log(divFromHtml);
+                // var h1 = document.createElement("h1");
+                // h1.innerText = "Krishnan"
+                // divFromHtml.append(h1)
+                var name = `<h1>${currentUser.userName}</h1>`;
+                divFromHtml.innerHTML = name;
+
+            }else{
+                alert("Current user is absent")
+            }
+        }
+    </script>
+</body>
+</html>
